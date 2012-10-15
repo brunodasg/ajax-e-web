@@ -1,0 +1,52 @@
+/** 
+ * Mensagens de alerta para o usuario
+ * Bruno Goncalves
+ * 25/03/2011
+ * Ref.: http://css.dzone.com/news/css-messagees-different-me
+ */
+ .info, .success, .warning, .error, .validation {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:10pt;
+    border: 1px solid;
+    margin:5px auto;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+	text-align:left;
+	font-weight:bold;
+	width:650px;
+}
+
+
+#flashMessage .info {
+    color: #00529B;
+    background-color: #BDE5F8;
+	background-image: url(../img/knob/info.png);
+}
+
+
+#flashMessage.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+	background-image: url(../img/knob/success.png);
+}
+
+
+#flashMessage.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+	background-image: url(../img/knob/warning.png);
+}
+
+
+#flashMessage.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+	background-image: url(../img/knob/error.png);
+}
+
+#flashMessage.validation {
+    color: #D63301;
+    background-color: #FFCCBA;
+	background-image: url(../img/knob/validation.png);
+}

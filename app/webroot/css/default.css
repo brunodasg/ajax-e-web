@@ -1,0 +1,230 @@
+@charset "utf-8";
+/**
+ * CSS comum a todo o site
+ */
+
+* {
+	margin:0;
+	padding:0;
+}
+
+a img {
+	border:none;
+}
+
+/** General Style Info **/
+html{
+	height:100%;
+	overflow-y: scroll !important;
+}
+body {
+	height:100%;
+	background-color: #FFFFFF;
+	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+	margin:0;
+	padding:0;	
+}
+
+/** Layout **/
+#header{	
+	height:40px;
+	background:	#000;
+	border-bottom:2px solid #CCC;
+}
+
+#topo{
+	width:960px;
+	margin:0 auto;	
+}
+
+#topo_menu ul li{
+	float:left;
+	padding:10px 5px;
+	background-color:#000000;
+	list-style:none;
+	height:20px;
+	color:#FFFFFF;
+}
+
+#topo_menu ul li:hover{
+	background-color:#0073EA;
+	color:#FFFFFF;
+	box-shadow:0px 2px 3px #FF0084;
+	-moz-box-shadow:0px 2px 3px #FF0084;
+	-webkit-box-shadow:0px 2px 3px, #FF0084;
+}
+
+#topo_menu ul li a{
+	text-decoration:none;
+	color:#0073EA;	
+}
+
+#topo_menu ul li a:hover{
+	height:20px;
+	color:#FFFFFF;
+}
+
+#title_page{
+	height:20px;
+	padding:0px 10px 20px;
+	background-color:#F6F6F6;
+	color:#2779AA;
+	text-shadow: 0px 1px 0px #000000;
+	font-size:22pt;
+	font-family:Tahoma, Geneva, sans-serif;
+	letter-spacing:2px;
+	width:100%;
+	float:left;
+}
+
+#body{
+	background:#FFFFFF;
+	width:960px;
+	margin:0 auto;
+}
+
+#content{
+	background:#FFFFFF;
+	width:940px;
+	margin:0 auto;
+	padding:10px;
+	float:left;
+}
+
+#footer {
+	height:40px;
+	width:100%;	
+	background-color:#33629B;
+	float:left;
+}
+
+#footer-content{
+	width:960px;
+	margin:0 auto;
+	color:#FFFFFF;
+	text-align:center;
+	margin-top:10px;
+}
+
+/**
+ * Background carbon
+*/
+.carbon{
+	background:
+	  radial-gradient(black 15%, transparent 16%) 0 0,
+	  radial-gradient(black 15%, transparent 16%) 8px 8px,
+	  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#282828;
+	background-size:16px 16px;
+}
+
+#autenticacao{
+	float:right;
+	color:#FFF;	
+}
+
+/* Redimensiona tamnho do button jquery-ui */
+.ui-button{
+	padding:0.3em 1em !important;
+	font-size:10pt !important;
+	font-weight:bold !important;
+}
+
+.ui-button-text{
+	display:inline !important;
+	line-height:1.35em !important;
+}
+
+
+/**
+ * Adicionar borda nos elementos ao receber foco
+*/
+input{
+    outline:none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border:1px solid rgba(0,0,0, 0.2);
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13pt;
+	color:#676767;
+	height:26px;
+}
+
+input:focus{
+    box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+    border:1px solid rgba(0,0,255, 0.8); 
+}
+
+select{
+    outline:none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border:1px solid rgba(0,0,0, 0.2);
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13pt;
+	color:#676767;
+	height:26px;
+}
+
+.tblForm{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:12pt;
+	color:#0073EA;	
+}
+
+.red{
+	color:red;	
+}
+
+
+.titleForm{
+	height:30px;	
+	background-color:#F6F6F6;	
+}
+
+.titleForm td{
+	padding:0px 5px;
+	font-weight:bold;
+	color:#2779AA;
+	border-top:5px solid #FFFFFF;
+}
+
+.date{
+	margin-right:1px;	
+}
+
+/* Redimensiona tamnho do datepicker jquery-ui */
+div.ui-datepicker {
+	font-size: 75%;
+}
+
+
+/* Exibe gif de interacao para requisicoes ajax */
+#ajaxLoad{
+	height:60px;
+	width:220px;
+	background-color:#FFFFFF;
+	text-align:center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#306161;	
+	border-style:dashed;
+	border-width:1px;
+	border-color:#999933;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-110px;
+	margin-top:-30px;
+	z-index:10;
+	padding:10px 0px;
+}
