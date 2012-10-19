@@ -15,7 +15,7 @@ class Deputado extends AppModel{
         try{
             # Lê a página
             $deputadosAux = file('http://www.zanluca.blog.br/deputados-federais.htm', FILE_SKIP_EMPTY_LINES);
-            #$deputadosAux = file('files/df.htm', FILE_SKIP_EMPTY_LINES);
+            //$deputadosAux = file('files/df.htm', FILE_SKIP_EMPTY_LINES);
 
             if(!$deputadosAux){
                 throw new Exception('Falha ao tentar ler o site.');
@@ -44,18 +44,18 @@ class Deputado extends AppModel{
                     $id = end(explode('=', $sCamera));
 
                     $deputadosAux[$key] = $id;
-                    $deputados[$id]['id'] = $id;
-                    $deputados[$id]['site_camara'] = $sCamera;
+                    $deputados[$id]['Deputado']['id'] = $id;
+                    $deputados[$id]['Deputado']['site_camara'] = $sCamera;
 
                     # Captura o site pessoal
                 }elseif(substr($value, 0, 4) == 'http'){
-                    $deputados[$id]['site_pessoal'] = strtolower(str_replace(array('/</a>', '</a>'), '', $value));
+                    $deputados[$id]['Deputado']['site_pessoal'] = strtolower(str_replace(array('/</a>', '</a>'), '', $value));
 
                     unset($deputadosAux[$key]);
 
                     # Captura o endereço de e-mail
                 }elseif(substr($value, 0, 4) == 'dep.'){
-                    $deputados[$id]['email'] = str_replace('</a>', '', $value);
+                    $deputados[$id]['Deputado']['email'] = str_replace('</a>', '', $value);
 
                     unset($deputadosAux[$key]);
 
@@ -81,17 +81,17 @@ class Deputado extends AppModel{
                     $dados1 = explode('/', str_replace(array('Partido/UF: ', ' - Gabinete: ', ' - Anexo:'), '/', $deputado[2]));
                     $dados2 = explode(' - Fax: ', $deputado[3]);
 
-                    $deputados[$id]['nome'] = utf8_encode(ucwords(strtolower($deputado[1])));
-                    $deputados[$id]['matricula'] = isset($arrMatricula[$id]) ? $arrMatricula[$id] : '';
-                    $deputados[$id]['partido'] = $dados1[1];
-                    $deputados[$id]['uf'] = $dados1[2];
-                    $deputados[$id]['gabinete'] = $dados1[3];
-                    $deputados[$id]['anexo'] = trim(substr($dados2[0], 0, 3));
-                    $deputados[$id]['fone'] = substr($dados2[0], -9);
-                    $deputados[$id]['fax'] = $dados2[1];
+                    $deputados[$id]['Deputado']['nome'] = utf8_encode(ucwords(strtolower($deputado[1])));
+                    $deputados[$id]['Deputado']['matricula'] = isset($arrMatricula[$id]) ? $arrMatricula[$id] : '';
+                    $deputados[$id]['Deputado']['partido'] = $dados1[1];
+                    $deputados[$id]['Deputado']['uf'] = $dados1[2];
+                    $deputados[$id]['Deputado']['gabinete'] = $dados1[3];
+                    $deputados[$id]['Deputado']['anexo'] = trim(substr($dados2[0], 0, 3));
+                    $deputados[$id]['Deputado']['fone'] = substr($dados2[0], -9);
+                    $deputados[$id]['Deputado']['fax'] = $dados2[1];
                     $nomeFoto = utf8_encode(strtolower(str_replace(' ', '', $deputado[1])).'.jpg');
-                    $deputados[$id]['foto'] = 'http://www.camara.gov.br/internet/deputado/bandep/'.$nomeFoto;
-                    $deputados[$id]['site_pessoal'] = isset($deputados[$id]['site_pessoal']) ? $deputados[$id]['site_pessoal'] : '';
+                    $deputados[$id]['Deputado']['foto'] = 'http://www.camara.gov.br/internet/deputado/bandep/'.$nomeFoto;
+                    $deputados[$id]['Deputado']['site_pessoal'] = isset($deputados[$id]['site_pessoal']) ? $deputados[$id]['site_pessoal'] : '';
                 }
             }
         }catch(Exception $e){
@@ -112,7 +112,7 @@ class Deputado extends AppModel{
     public function getDeputadoFederal($id){
         $deputados = $this->getDeputadosFederais();
 
-        $deputado = $deputados[$id];
+        $deputado = $deputados[$id]['Deputado'];
 
         return $deputado;
     }
@@ -250,8 +250,8 @@ class Deputado extends AppModel{
 
         $arrSelect = array_values(array_filter($arrSelect));
 
-        $arrSelect = array_slice($arrSelect, 172, 513);
-
+        $arrSelect = array_slice($arrSelect, 172, 512);
+        
         $arrMatricula = array();
         foreach($arrSelect as $key => $value){
             $arr = explode('%', $value);

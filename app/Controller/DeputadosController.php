@@ -16,21 +16,37 @@ class DeputadosController extends AppController{
     public function index(){
         $arrDeputados = $this->Deputado->getDeputadosFederais();
 
-
-        foreach($arrDeputados as $deputado){
-            $deputados[$deputado['id']] = $deputado['nome'];
+        $deputadosFederais = array();
+        foreach($arrDeputados as $id => $deputado){
+            $deputados[$id] = $deputado['Deputado']['nome'];
+            $deputadosFederais[] = $deputado['Deputado'];
         }
 		
 				
 		$this->set(array(
-            'deputadosFederais' => $arrDeputados,
+            'deputadosFederais' => $deputadosFederais,
             '_serialize' => array('deputadosFederais')
         ));
 		
 		$this->set(compact('deputados'));
     }
-
-
+    
+    
+    /**
+     * Recupera informações de um deputado
+     * @param id $id ID do deputado
+     * @return void
+     */
+    public function view($id){
+        $deputado = $this->Deputado->getDeputadoFederal($id);
+        
+		$this->set(array(
+            'deputadoFederal' => $deputado,
+            '_serialize' => array('deputadoFederal')
+        ));
+    }
+    
+    
     /**
      * Recupera informações de um deputado
      * @param id $id ID do deputado
